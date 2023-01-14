@@ -31,13 +31,10 @@ export class AppComponent {
     this.plantType = "" ;
   }
 
-
-  /*Así me borrar el contenido del input pero me falta el de los radio*/
   public deleteForm(): void {
     this.newPlant = "" ;
     this.plantType = "" ;
   }
-
 
   public deletePlant (plant: Plant): void {
     this.plants = this.plants.filter(arrayPlants => arrayPlants !== plant);
