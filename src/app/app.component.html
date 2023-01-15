@@ -333,26 +333,31 @@
 <!-- Formulario -->
 <h1>Formulario para crear nuevas plantas</h1>
 <div>
-  <div>
-    <!--Input para introducir nombre -->
-    <input type="text" placeholder="Nombre de la planta" [(ngModel)]="newPlant">
-    <!--<app-radio-form> {{ plantType }} </app-radio-form>-->
-    <p>tipo de planta seleccionada: <br> {{ plantType }}</p>
-    <form>
-      <img src="assets/img/tree.png" height="150"><input [(ngModel)]="plantType" value="arbol" type="radio" name="plant">
-      <img src="assets/img/arbusto.jpg" height="150"><input [(ngModel)]="plantType" value="arbusto" type="radio" name="plant">
-    </form>
-    <app-all-button (click)="deleteForm()" texto="Borrar" color="red"></app-all-button>
-    <app-all-button (click)="addList()" texto="Añadir planta" color="green"></app-all-button>
-  </div>
+  <form>
+    <div>
+      <!--Input para introducir nombre -->
+      <input id="name" name="name" type="text" placeholder="Nombre de la planta" [(ngModel)]="newPlant">
+    </div>
+    <div>
+      <!--<app-radio-form> {{ plantType }} </app-radio-form>-->
+      <p>tipo de planta seleccionada: <br> {{ plantType }}</p>
+        <img src="assets/img/tree.png" height="150"><input [(ngModel)]="plantType" value="arbol" type="radio" name="plant">
+        <img src="assets/img/arbusto.jpg" height="150"><input [(ngModel)]="plantType" value="arbusto" type="radio" name="plant">
+    </div>
+    <div>
+      <app-all-button (click)="deleteForm()" texto="Borrar" color="red"></app-all-button>
+      <app-all-button (click)="addList()" texto="Añadir planta" color="green"></app-all-button>
+    </div>
+  </form>
 
   <!-- Lista -->
   <div>
     <h1>Lista de arboles/arbustos</h1>
     <ul>
       <li
-        *ngFor="let plant of plants"
+        *ngFor="let plant of plants "
         [class.favorite]="plant.favorite === true"
+
       > <!--{{ plant.name }}-->
         <app-list-element
           [plant]="plant"

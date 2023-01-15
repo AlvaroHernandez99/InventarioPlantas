@@ -1,7 +1,8 @@
-import {Component, VERSION} from '@angular/core';
+import {Component, Input, VERSION} from '@angular/core';
 import { Plant } from './interfaces/plant';
 import { PLANTS } from './interfaces/mocks-plants';
 import { RadioFormComponent } from "./components/radio-form/radio-form.component";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-root',
@@ -20,13 +21,16 @@ export class AppComponent {
 
   public plants: Plant[] = PLANTS;
 
+  orderBy: string;
+
   public addList(): void {
-    if (!this.newPlant) {
-      return;
+    if (!this.newPlant || !this.plantType) {
+      return ;
     }
     this.plants.push({
       name: this.newPlant, type: this.plantType, favorite: false
     })
+
     this.newPlant = "";
     this.plantType = "" ;
   }
@@ -44,9 +48,7 @@ export class AppComponent {
     const arrayPlants = this.plants.find(arrayPlants => arrayPlants === plant).favorite = favorite;
   }
 
-  public orderAlphabetically () {
 
-  }
 
 
 }

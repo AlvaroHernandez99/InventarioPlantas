@@ -1,5 +1,9 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import {Component, EventEmitter, Input, OnChanges, Output} from '@angular/core';
 import { Plant } from '../../interfaces/plant';
+import {PLANTS} from "../../interfaces/mocks-plants";
+
+class RadioComponent {
+}
 
 @Component({
   selector: 'app-list-element',
@@ -11,7 +15,7 @@ export class ListElementComponent {
   @Output() deleteEvent: EventEmitter<void> = new EventEmitter();
   @Output() conditionEvent: EventEmitter<boolean> = new EventEmitter();
 
-
+  public plants: Plant[] = PLANTS;
   public deletePlant(): void {
     this.deleteEvent.emit();
   }
@@ -19,6 +23,7 @@ export class ListElementComponent {
   public conditionChange(): void {
     this.conditionEvent.emit(!this.plant.favorite);
   }
+
 
 
 }
